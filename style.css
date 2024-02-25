@@ -1,0 +1,132 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+body {
+    font-family: 'Fira Code', monospace; /* Using Fira Code font */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: #808080; /* Grey */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 0.5s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold */
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Partition border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+    animation: fadeInUp 0.5s ease;
+}
+
+.my-skills h2 {
+    margin-bottom: 15px;
+}
+
+.skill {
+    margin-bottom: 10px;
+}
+
+.skill span {
+    font-weight: 700;
+}
+
+.skill-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    height: 30px; /* Increased height */
+    overflow: hidden;
+}
+
+.skill-level {
+    background-color: #007bff;
+    color: #fff;
+    text-align: right;
+    padding: 5px 10px;
+    transition: width 0.3s ease;
+}
+
+/* Skill Bar Width Based on Skill Level */
+.skill-level.html {
+    width: 90%;
+}
+
+.skill-level.css {
+    width: 85%;
+}
+
+.skill-level.cpp {
+    width: 75%;
+}
+
+.skill-level.js {
+    width: 80%;
+}
+
+.profile-photo {
+    max-width: 200px; /* Set the maximum width */
+    border-radius: 20%; /* Make it round */ /* Ensures the image is centered */
+    margin: 0 auto; /* Centers the image horizontally */
+}
