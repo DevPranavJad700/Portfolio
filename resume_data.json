@@ -1,0 +1,78 @@
+{
+  "personal": {
+    "name": "Pranav Jadhav",
+    "title": "Final-year IT Student, VJTI Mumbai | Backend & Full-Stack Developer",
+    "location": "Mumbai, Maharashtra, India",
+    "email": "pranavjadhav532@gmail.com",
+    "linkedin": "https://linkedin.com/in/pranav-jadhav",
+    "github": "https://github.com/DevPranavJad700"
+  },
+  "education": {
+    "institution": "Veermata Jijabai Technological Institute (VJTI)",
+    "degree": "Bachelor of Technology in Information Technology",
+    "period": "Aug. 2023 – May 2027",
+    "location": "Mumbai, Maharashtra",
+    "cgpa": "7.57 / 10",
+    "achievement": "MHT-CET 2023: Rank under 700 out of 3 lakh+ candidates statewide",
+    "coursework": [
+      "Data Structures & Algorithms",
+      "Operating Systems",
+      "Computer Networks",
+      "Database Management Systems",
+      "Software Engineering",
+      "Artificial Intelligence",
+      "Web Technologies"
+    ]
+  },
+  "competitive_programming": {
+    "leetcode": {
+      "solved": "400+",
+      "rating": 1768,
+      "percentile": "Top 10%"
+    },
+    "codeforces": {
+      "solved": "200+"
+    },
+    "codechef": {
+      "stars": "3-Star",
+      "rating": 1622,
+      "max_rating": 1697
+    }
+  },
+  "projects": [
+    {
+      "id": "eventsync",
+      "title": "EventSync — Multi-Tenant Event Management SaaS",
+      "date": "May 2026",
+      "techStack": ["Next.js", "TypeScript", "Clerk", "Prisma", "NeonDB", "Tailwind CSS", "Upstash Redis", "Vitest", "Playwright", "GitHub Actions"],
+      "github": "https://github.com/DevPranavJad700/eventsync",
+      "bullets": [
+        "Built a full-stack multi-tenant event management SaaS with organization workspaces, Clerk authentication/organizations, and role-based access control (RBAC) enforced at the API layer with strict workspace-level data isolation.",
+        "Synced user and organization lifecycle events via Svix-backed Clerk Webhooks into NeonDB using Prisma ORM, with soft deletes and versioned migrations for safe schema evolution.",
+        "Implemented per-tenant rate limiting with Upstash Redis, Zod-validated environment config, and structured logging to harden the app for serverless deployment, and built an admin dashboard to audit webhook events.",
+        "Wrote Vitest unit/integration tests and Playwright E2E tests covering RBAC and tenant isolation, wired into a GitHub Actions CI pipeline."
+      ]
+    },
+    {
+      "id": "askaway",
+      "title": "AskAway — Full-Stack QnA Platform",
+      "date": "February 2026",
+      "techStack": ["Next.js", "React.js", "Appwrite", "Tailwind CSS"],
+      "github": "https://github.com/DevPranavJad700/askaway",
+      "bullets": [
+        "Built a Stack Overflow-style developer-focused QnA platform enabling real-time question browsing and answers; leveraged Next.js SSR to achieve sub-2s page load across 10+ dynamic routes.",
+        "Architected real-time answer sync using Appwrite Webhooks, with the Appwrite SDK handling authentication, user management, and database operations.",
+        "Resolved server-side auth hydration mismatch in Next.js App Router by configuring Appwrite session cookies for SSR, ensuring consistent authentication state across server and client renders.",
+        "Designed a fully responsive, mobile-first UI with React.js and Tailwind CSS, ensuring consistent UX across devices."
+      ]
+    }
+  ],
+  "skills": {
+    "languages": ["C++", "JavaScript", "TypeScript", "HTML/CSS", "SQL"],
+    "frontend": ["React.js", "Next.js (App Router)", "Tailwind CSS"],
+    "backend": ["Node.js", "Express.js", "REST APIs", "GraphQL", "Prisma ORM"],
+    "databases": ["PostgreSQL", "NeonDB", "MongoDB", "Redis"],
+    "tools": ["Git", "GitHub", "Docker", "Vercel", "Postman", "CI/CD (GitHub Actions)", "AWS", "Appwrite", "Clerk"],
+    "cs_fundamentals": ["Data Structures & Algorithms", "Object-Oriented Programming", "Operating Systems", "DBMS"]
+  }
+}

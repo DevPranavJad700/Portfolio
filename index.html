@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranav Jadhav | Backend & Full-Stack Developer | VJTI Mumbai</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Pranav Jadhav - Final-year IT Student at VJTI Mumbai, Backend & Full-Stack Developer specializing in Next.js, Node.js, C++, TypeScript, PostgreSQL, and Cloud Systems. MHT-CET State Rank < 700.">
+  <meta name="keywords" content="Pranav Jadhav, VJTI Mumbai, Full-Stack Developer, Backend Engineer, Next.js, TypeScript, C++, LeetCode, EventSync, AskAway, React, Node.js">
+  <meta name="author" content="Pranav Jadhav">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <!-- System Diagnostics Bar -->
+  <header class="diag-bar">
+    <div class="diag-left">
+      <span><span class="status-dot"></span> <span class="diag-emerald">SYSTEM ONLINE</span></span>
+      <span>NODE: <span class="diag-cyan">VJTI_MUMBAI_IT</span></span>
+      <span>PING: <span class="diag-cyan" id="diag-ping">14ms</span></span>
+    </div>
+    <div class="diag-right">
+      <span>STATUS: <span class="diag-emerald">200 OK</span></span>
+      <span>ROLE: <span class="diag-purple">BACKEND & FULL-STACK</span></span>
+      <span>CLASS OF: <span class="diag-cyan">MAY 2027</span></span>
+    </div>
+  </header>
+
+  <!-- Floating Navigation Deck -->
+  <nav class="navbar glass-panel">
+    <a href="#hero" class="nav-brand">
+      <i class="fa-solid fa-terminal"></i>
+      <span>PRANAV.DEV</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Overview</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#stats">Competitive Prog</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#terminal">CLI Terminal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="controls-group">
+      <!-- Canvas Mode Switcher -->
+      <div class="bg-selector" title="Switch Background Animation Mode">
+        <button class="bg-btn active" data-mode="particles">Nodes</button>
+        <button class="bg-btn" data-mode="matrix">Matrix</button>
+        <button class="bg-btn" data-mode="grid">Grid</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="section-container hero-section">
+      <div class="hero-badge">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>VJTI Mumbai B.Tech IT • Rank &lt; 700 / 3Lakh+</span>
+      </div>
+
+      <h1 class="hero-name">Pranav Jadhav</h1>
+
+      <h2 class="hero-subtitle">
+        Final-year IT Student at <strong>VJTI Mumbai</strong> | <strong>Backend & Full-Stack Developer</strong> crafting resilient multi-tenant SaaS architectures, real-time web engines, and scalable distributed APIs.
+      </h2>
+
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn-primary">
+          <i class="fa-solid fa-rocket"></i> Explore Projects
+        </a>
+        <a href="#terminal" class="btn-outline">
+          <i class="fa-solid fa-terminal"></i> Launch CLI Terminal
+        </a>
+        <a href="https://github.com/DevPranavJad700" target="_blank" class="btn-outline">
+          <i class="fa-brands fa-github"></i> GitHub Profile
+        </a>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="metrics-grid">
+        <div class="metric-card glass-panel">
+          <i class="fa-solid fa-trophy metric-icon"></i>
+          <div>
+            <div class="metric-val counter-val" data-target="400" data-suffix="+">0</div>
+            <div class="metric-label">LeetCode Solved (Top 10%)</div>
+          </div>
+        </div>
+
+        <div class="metric-card glass-panel">
+          <i class="fa-solid fa-code-commit metric-icon" style="color: var(--primary-purple);"></i>
+          <div>
+            <div class="metric-val counter-val" data-target="200" data-suffix="+">0</div>
+            <div class="metric-label">Codeforces Solved</div>
+          </div>
+        </div>
+
+        <div class="metric-card glass-panel">
+          <i class="fa-solid fa-star metric-icon" style="color: var(--accent-gold);"></i>
+          <div>
+            <div class="metric-val">3-Star</div>
+            <div class="metric-label">CodeChef Rated (1697 Max)</div>
+          </div>
+        </div>
+
+        <div class="metric-card glass-panel">
+          <i class="fa-solid fa-award metric-icon" style="color: var(--primary-emerald);"></i>
+          <div>
+            <div class="metric-val">&lt; 700</div>
+            <div class="metric-label">MHT-CET Statewide Rank</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & VJTI SPOTLIGHT -->
+    <section id="education" class="section-container">
+      <div class="section-title">
+        <span class="title-tag">01.</span>
+        <span>Education & Academic Credentials</span>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="glass-panel" style="padding: 36px; border-left: 4px solid var(--primary-cyan);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Veermata Jijabai Technological Institute (VJTI)</h3>
+            <p style="font-family: var(--font-code); color: var(--primary-cyan); font-size: 1rem;">Bachelor of Technology in Information Technology</p>
+          </div>
+          <div style="font-family: var(--font-code); color: var(--text-muted); text-align: right;">
+            <div>Aug 2023 – May 2027</div>
+            <div>Mumbai, Maharashtra</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;">
+          <div style="background: rgba(0, 243, 255, 0.1); border: 1px solid var(--primary-cyan); padding: 8px 16px; border-radius: var(--radius-sm); font-family: var(--font-code);">
+            CGPA: <strong style="color: var(--text-main);">7.57 / 10</strong>
+          </div>
+          <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid var(--primary-emerald); padding: 8px 16px; border-radius: var(--radius-sm); font-family: var(--font-code); color: var(--primary-emerald);">
+            🏆 MHT-CET 2023: Rank under 700 / 3 Lakh+ candidates
+          </div>
+        </div>
+
+        <h4 style="font-family: var(--font-code); font-size: 0.95rem; color: var(--text-muted); margin-bottom: 12px;">RELEVANT COURSEWORK:</h4>
+        <div class="tech-pills">
+          <span class="pill">Data Structures & Algorithms</span>
+          <span class="pill">Operating Systems</span>
+          <span class="pill">Computer Networks</span>
+          <span class="pill">Database Management Systems</span>
+          <span class="pill">Software Engineering</span>
+          <span class="pill">Artificial Intelligence</span>
+          <span class="pill">Web Technologies</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETITIVE PROGRAMMING DASHBOARD -->
+    <section id="stats" class="section-container">
+      <div class="section-title">
+        <span class="title-tag">02.</span>
+        <span>Competitive Programming & Problem Solving</span>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="cp-grid">
+        <!-- LeetCode Card -->
+        <div class="cp-card glass-panel">
+          <div class="cp-header">
+            <div class="cp-platform">
+              <i class="fa-solid fa-code" style="color: var(--primary-cyan);"></i> LeetCode
+            </div>
+            <span class="cp-badge">Top 10%</span>
+          </div>
+          <div class="cp-stat-large">400+</div>
+          <div class="cp-substat">Problems Solved</div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-family: var(--font-code); font-size: 0.9rem; color: var(--text-muted);">
+            Contest Rating: <strong style="color: var(--primary-cyan);">1768</strong>
+          </div>
+        </div>
+
+        <!-- Codeforces Card -->
+        <div class="cp-card codeforces glass-panel">
+          <div class="cp-header">
+            <div class="cp-platform">
+              <i class="fa-solid fa-chart-line" style="color: var(--primary-purple);"></i> Codeforces
+            </div>
+            <span class="cp-badge" style="background: rgba(157, 78, 221, 0.15); color: var(--primary-purple); border-color: var(--primary-purple);">Active Coder</span>
+          </div>
+          <div class="cp-stat-large" style="color: var(--primary-purple);">200+</div>
+          <div class="cp-substat">Problems Solved</div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-family: var(--font-code); font-size: 0.9rem; color: var(--text-muted);">
+            Focus: Algorithmic Efficiency & Math
+          </div>
+        </div>
+
+        <!-- CodeChef Card -->
+        <div class="cp-card codechef glass-panel">
+          <div class="cp-header">
+            <div class="cp-platform">
+              <i class="fa-solid fa-star" style="color: var(--accent-gold);"></i> CodeChef
+            </div>
+            <span class="cp-badge" style="background: rgba(255, 183, 3, 0.15); color: var(--accent-gold); border-color: var(--accent-gold);">3-Star Coder</span>
+          </div>
+          <div class="cp-stat-large" style="color: var(--accent-gold);">1622</div>
+          <div class="cp-substat">Current Rating (Max: 1697)</div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-family: var(--font-code); font-size: 0.9rem; color: var(--text-muted);">
+            Ranked among top university competitive coders
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS MATRIX -->
+    <section id="skills" class="section-container">
+      <div class="section-title">
+        <span class="title-tag">03.</span>
+        <span>Technical Skills Matrix</span>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="skill-tabs">
+        <button class="tab-btn active" data-category="all">All Stack</button>
+        <button class="tab-btn" data-category="languages">Languages</button>
+        <button class="tab-btn" data-category="frontend">Frontend</button>
+        <button class="tab-btn" data-category="backend">Backend & APIs</button>
+        <button class="tab-btn" data-category="databases">Databases & Caching</button>
+        <button class="tab-btn" data-category="tools">Tools & DevOps</button>
+        <button class="tab-btn" data-category="cs">CS Fundamentals</button>
+      </div>
+
+      <div class="skills-wrapper" id="skills-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SHOWCASE -->
+    <section id="projects" class="section-container">
+      <div class="section-title">
+        <span class="title-tag">04.</span>
+        <span>Featured Engineering Projects</span>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- EventSync SaaS -->
+        <article class="project-card glass-panel">
+          <div>
+            <div class="project-date">May 2026 • Full-Stack SaaS</div>
+            <h3 class="project-title">EventSync — Multi-Tenant Event Management SaaS</h3>
+            <p class="project-desc">
+              Built a full-stack multi-tenant event management SaaS platform featuring organization workspaces, Clerk authentication, role-based access control (RBAC) enforced at the API layer, and soft deletes with versioned migrations for safe schema evolution.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">
+              <li style="margin-bottom: 8px;"><i class="fa-solid fa-check" style="color: var(--primary-cyan);"></i> Synced user & org lifecycles via Svix Clerk Webhooks into NeonDB with Prisma ORM.</li>
+              <li style="margin-bottom: 8px;"><i class="fa-solid fa-check" style="color: var(--primary-cyan);"></i> Per-tenant rate limiting with Upstash Redis, Zod config validation & structured logging.</li>
+              <li><i class="fa-solid fa-check" style="color: var(--primary-cyan);"></i> Vitest unit tests & Playwright E2E tests wired into GitHub Actions CI pipeline.</li>
+            </ul>
+            <div class="tech-pills">
+              <span class="pill">Next.js</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">Clerk Auth</span>
+              <span class="pill">Prisma ORM</span>
+              <span class="pill">NeonDB</span>
+              <span class="pill">Upstash Redis</span>
+              <span class="pill">Vitest</span>
+              <span class="pill">Playwright</span>
+              <span class="pill">GitHub Actions</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/DevPranavJad700" target="_blank" class="btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">
+              <i class="fa-brands fa-github"></i> Repository
+            </a>
+          </div>
+        </article>
+
+        <!-- AskAway Platform -->
+        <article class="project-card glass-panel">
+          <div>
+            <div class="project-date">February 2026 • Real-Time Web App</div>
+            <h3 class="project-title">AskAway — Full-Stack QnA Platform</h3>
+            <p class="project-desc">
+              Stack Overflow-style developer-focused QnA platform enabling real-time question browsing and answers. Achieved sub-2s page load times across 10+ dynamic routes leveraging Next.js SSR and custom cookie session handshakes.
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">
+              <li style="margin-bottom: 8px;"><i class="fa-solid fa-check" style="color: var(--primary-emerald);"></i> Real-time answer sync using Appwrite Webhooks & SDK authentication.</li>
+              <li style="margin-bottom: 8px;"><i class="fa-solid fa-check" style="color: var(--primary-emerald);"></i> Resolved server-side auth hydration mismatch in Next.js App Router using session cookies.</li>
+              <li><i class="fa-solid fa-check" style="color: var(--primary-emerald);"></i> Fully responsive, mobile-first design system built with React.js & Tailwind CSS.</li>
+            </ul>
+            <div class="tech-pills">
+              <span class="pill">Next.js (App Router)</span>
+              <span class="pill">React.js</span>
+              <span class="pill">Appwrite</span>
+              <span class="pill">Tailwind CSS</span>
+              <span class="pill">Webhooks</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/DevPranavJad700" target="_blank" class="btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">
+              <i class="fa-brands fa-github"></i> Repository
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CLI TERMINAL -->
+    <section id="terminal" class="section-container">
+      <div class="section-title">
+        <span class="title-tag">05.</span>
+        <span>Pro Developer CLI Terminal</span>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">pranav@vjti-mumbai:~ (zsh)</div>
+          <div style="font-family: var(--font-code); font-size: 0.75rem; color: var(--primary-cyan);">UTF-8</div>
+        </div>
+
+        <div class="terminal-body" id="terminal-body">
+          <form class="terminal-input-form" id="terminal-form">
+            <span class="term-prompt">pranav@vjti-mumbai:~$</span>
+            <input type="text" class="terminal-input" id="terminal-input" placeholder="Type 'help', 'skills', 'projects', 'stats'..." autocomplete="off" spellcheck="false" autofocus>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" class="section-container contact-section">
+      <div class="contact-card glass-panel">
+        <h2 style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; margin-bottom: 12px;">Get In Touch</h2>
+        <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 30px auto;">
+          Whether you have a full-time role, a backend architectural query, or just want to connect with a fellow developer, my inbox is open!
+        </p>
+
+        <div class="contact-grid">
+          <a href="mailto:pranavjadhav532@gmail.com" class="contact-item">
+            <i class="fa-solid fa-envelope" style="color: var(--primary-cyan);"></i>
+            <span>pranavjadhav532@gmail.com</span>
+          </a>
+
+          <a href="https://github.com/DevPranavJad700" target="_blank" class="contact-item">
+            <i class="fa-brands fa-github"></i>
+            <span>DevPranavJad700</span>
+          </a>
+
+          <a href="https://linkedin.com/in/pranav-jadhav" target="_blank" class="contact-item">
+            <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i>
+            <span>pranav-jadhav</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Designed & Engineered by <strong style="color: var(--primary-cyan);">Pranav Jadhav</strong> | VJTI Mumbai Class of '27</p>
+    <p style="margin-top: 6px; color: rgba(255,255,255,0.4);">Built with Vanilla HTML5, CSS Glassmorphic Engine & Canvas WebGL APIs</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="background.js"></script>
+  <script src="terminal.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
