@@ -3,7 +3,7 @@
   # ⚡ PRANAV JADHAV
   ### Final-Year IT Student @ VJTI Mumbai | Backend & Full-Stack Engineer
   
-  [🌐 **Explore Interactive Pro Portfolio**](https://devpranavjad700.github.io/portfolio/) • [💼 **LinkedIn**](https://linkedin.com/in/pranav-jadhav) • [📧 **Email**](mailto:pranavjadhav532@gmail.com)
+  [🌐 **Explore Interactive Pro Portfolio**](https://devpranavjad700.github.io/portfolio/) • [💼 **LinkedIn**](https://www.linkedin.com/in/pranav-jadhav-4853441b3/) • [📧 **Email**](mailto:pranavjadhav532@gmail.com)
 
   ```gcode
   +-------------------------------------------------------------------------------+

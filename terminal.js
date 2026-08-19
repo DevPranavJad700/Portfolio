@@ -161,7 +161,7 @@ class TerminalEngine {
   <p><span class="term-highlight">CONTACT DIRECTORY:</span></p>
   <p>📧 Email: <a href="mailto:pranavjadhav532@gmail.com" class="term-link">pranavjadhav532@gmail.com</a></p>
   <p>💻 GitHub: <a href="https://github.com/DevPranavJad700" target="_blank" class="term-link">DevPranavJad700</a></p>
-  <p>🔗 LinkedIn: <a href="https://linkedin.com/in/pranav-jadhav" target="_blank" class="term-link">pranav-jadhav</a></p>
+  <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/pranav-jadhav-4853441b3/" target="_blank" class="term-link">pranav-jadhav</a></p>
 </div>
         `);
         this.scrollToSection('contact');
