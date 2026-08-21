@@ -453,7 +453,7 @@
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
           <button id="audio-play-pause-btn" class="audio-main-btn" aria-label="Play or Pause">
-            <i class="fa-solid fa-pause" id="audio-btn-icon"></i>
+            <i class="fa-solid fa-play" id="audio-btn-icon"></i>
           </button>
         </div>
       </div>
@@ -463,14 +463,8 @@
         <span>AUDIO MODE &mdash; PROSPA &amp; CLOONEE</span>
       </div>
 
-      <!-- Hidden Background Audio Streamer -->
-      <iframe
-        id="music-iframe"
-        style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: 0;"
-        src=""
-        title="Audio Stream"
-        allow="autoplay"
-      ></iframe>
+      <!-- HTML5 Native Audio Player -->
+      <audio id="audio-element" src="free-your-mind.mp3" preload="auto" loop></audio>
     </div>
   </div>
   <!-- ====================================================== -->
@@ -731,35 +725,30 @@
   <script src="terminal.js"></script>
   <script src="app.js"></script>
 
-  <!-- Audio Player Logic -->
+  <!-- Audio Player Logic (HTML5 MP3) -->
   <script>
     (function() {
-      const toggleBtn  = document.getElementById('music-toggle-btn');
-      const closeBtn   = document.getElementById('music-close-btn');
+      const toggleBtn    = document.getElementById('music-toggle-btn');
+      const closeBtn     = document.getElementById('music-close-btn');
       const playPauseBtn = document.getElementById('audio-play-pause-btn');
-      const btnIcon    = document.getElementById('audio-btn-icon');
-      const card       = document.getElementById('music-player-card');
-      const vinyl      = document.getElementById('vinyl-disc');
-      const iframe     = document.getElementById('music-iframe');
-      const YOUTUBE_STREAM_SRC = 'https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=0';
+      const btnIcon      = document.getElementById('audio-btn-icon');
+      const card         = document.getElementById('music-player-card');
+      const vinyl        = document.getElementById('vinyl-disc');
+      const audio        = document.getElementById('audio-element');
 
-      let isPlaying = false;
-
-      function startAudio() {
-        isPlaying = true;
-        if (!iframe.src || iframe.src === 'about:blank') {
-          iframe.src = YOUTUBE_STREAM_SRC;
-        }
-        card.classList.remove('hidden');
-        card.classList.add('playing');
-        toggleBtn.classList.add('playing');
-        vinyl.classList.add('spinning');
-        btnIcon.className = 'fa-solid fa-pause';
+      function playAudio() {
+        audio.play().then(() => {
+          card.classList.add('playing');
+          toggleBtn.classList.add('playing');
+          vinyl.classList.add('spinning');
+          btnIcon.className = 'fa-solid fa-pause';
+        }).catch(err => {
+          console.log('Audio playback waiting for file or user gesture:', err);
+        });
       }
 
       function pauseAudio() {
-        isPlaying = false;
-        iframe.src = ''; // stop background audio stream
+        audio.pause();
         card.classList.remove('playing');
         toggleBtn.classList.remove('playing');
         vinyl.classList.remove('spinning');
@@ -769,8 +758,8 @@
       function togglePlayerCard() {
         if (card.classList.contains('hidden')) {
           card.classList.remove('hidden');
-          if (!isPlaying) {
-            startAudio();
+          if (audio.paused) {
+            playAudio();
           }
         } else {
           card.classList.add('hidden');
@@ -784,10 +773,10 @@
       });
 
       playPauseBtn.addEventListener('click', function() {
-        if (isPlaying) {
-          pauseAudio();
+        if (audio.paused) {
+          playAudio();
         } else {
-          startAudio();
+          pauseAudio();
         }
       });
     })();
