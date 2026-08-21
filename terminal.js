@@ -77,11 +77,11 @@ class TerminalEngine {
   <table class="term-table">
     <tr><td><span class="term-cmd">about</span></td><td>Display bio and VJTI education info</td></tr>
     <tr><td><span class="term-cmd">skills</span></td><td>List all technical skills and CS fundamentals</td></tr>
-    <tr><td><span class="term-cmd">projects</span></td><td>Showcase featured full-stack projects (EventSync & AskAway)</td></tr>
+    <tr><td><span class="term-cmd">projects</span></td><td>Showcase featured projects (EventSync, AskAway &amp; Churn Dashboard)</td></tr>
     <tr><td><span class="term-cmd">stats</span></td><td>View Competitive Programming stats (LeetCode, Codeforces, CodeChef)</td></tr>
     <tr><td><span class="term-cmd">education</span></td><td>Details about B.Tech IT at VJTI & MHT-CET Rank</td></tr>
     <tr><td><span class="term-cmd">contact</span></td><td>Display email, phone, GitHub, and LinkedIn</td></tr>
-    <tr><td><span class="term-cmd">bg &lt;mode&gt;</span></td><td>Change canvas background: <span class="term-highlight">particles</span> | <span class="term-highlight">matrix</span> | <span class="term-highlight">grid</span></td></tr>
+    <tr><td><span class="term-cmd">bg &lt;mode&gt;</span></td><td>Change canvas background: <span class="term-highlight">particles</span> | <span class="term-highlight">matrix</span> | <span class="term-grid">grid</span></td></tr>
     <tr><td><span class="term-cmd">sudo hire</span></td><td>Special command to access candidate contact info</td></tr>
     <tr><td><span class="term-cmd">clear</span></td><td>Clear terminal screen output</td></tr>
   </table>
@@ -105,11 +105,12 @@ class TerminalEngine {
         this.printLine(`
 <div class="term-output">
   <p><span class="term-highlight">TECHNICAL SKILLS MATRIX:</span></p>
-  <p><span class="term-cyan">Languages:</span> C++, JavaScript, TypeScript, HTML/CSS, SQL</p>
+  <p><span class="term-cyan">Languages:</span> C++, JavaScript, TypeScript, Python, HTML/CSS, SQL</p>
   <p><span class="term-cyan">Frontend:</span> React.js, Next.js (App Router), Tailwind CSS</p>
   <p><span class="term-cyan">Backend:</span> Node.js, Express.js, REST APIs, GraphQL, Prisma ORM</p>
-  <p><span class="term-cyan">Databases:</span> PostgreSQL, NeonDB, MongoDB, Redis</p>
-  <p><span class="term-cyan">Tools & Cloud:</span> Git, GitHub, Docker, Vercel, Postman, CI/CD (GitHub Actions), AWS, Appwrite, Clerk</p>
+  <p><span class="term-cyan">Databases:</span> PostgreSQL, NeonDB, MongoDB, Redis, DuckDB</p>
+  <p><span class="term-cyan">Data &amp; ML:</span> Scikit-learn, Pandas, NumPy, Plotly, Streamlit, Feature Engineering</p>
+  <p><span class="term-cyan">Tools &amp; Cloud:</span> Git, GitHub, Docker, Vercel, Postman, CI/CD (GitHub Actions), AWS, Appwrite, Clerk</p>
 </div>
         `);
         this.scrollToSection('skills');
@@ -121,6 +122,8 @@ class TerminalEngine {
   <p><span class="term-highlight">FEATURED PROJECTS:</span></p>
   <p>1. <span class="term-cyan">EventSync</span> - Multi-Tenant Event Management SaaS (Next.js, TS, Clerk, Prisma, Upstash Redis)</p>
   <p>2. <span class="term-cyan">AskAway</span> - Developer QnA Platform (Next.js SSR, Appwrite Webhooks, Tailwind CSS)</p>
+  <p>3. <span class="term-cyan">Customer Churn &amp; Retention Dashboard</span> - Telecom Analytics &amp; ML Dashboard (Python, Streamlit, DuckDB, Scikit-learn | ROC-AUC: 0.841)</p>
+  <p><a href="https://github.com/DevPranavJad700/customer-churn-retention-dashboard" target="_blank" class="term-link">→ github.com/DevPranavJad700/customer-churn-retention-dashboard</a></p>
 </div>
         `);
         this.scrollToSection('projects');

@@ -17,6 +17,7 @@ const skillsData = {
     { name: 'C++', icon: 'fa-solid fa-code' },
     { name: 'TypeScript', icon: 'fa-brands fa-js' },
     { name: 'JavaScript', icon: 'fa-brands fa-square-js' },
+    { name: 'Python', icon: 'fa-brands fa-python' },
     { name: 'SQL', icon: 'fa-solid fa-database' },
     { name: 'HTML/CSS', icon: 'fa-brands fa-html5' }
   ],
@@ -46,7 +47,20 @@ const skillsData = {
     { name: 'Vercel', icon: 'fa-solid fa-globe' },
     { name: 'Postman', icon: 'fa-solid fa-paper-plane' },
     { name: 'Appwrite', icon: 'fa-solid fa-fire' },
-    { name: 'Clerk Auth', icon: 'fa-solid fa-key' }
+    { name: 'Clerk Auth', icon: 'fa-solid fa-key' },
+    { name: 'Streamlit', icon: 'fa-solid fa-chart-bar' },
+    { name: 'DuckDB', icon: 'fa-solid fa-database' },
+    { name: 'Plotly', icon: 'fa-solid fa-chart-line' }
+  ],
+  data: [
+    { name: 'Machine Learning', icon: 'fa-solid fa-brain' },
+    { name: 'Scikit-learn', icon: 'fa-solid fa-robot' },
+    { name: 'Pandas', icon: 'fa-solid fa-table-cells' },
+    { name: 'NumPy', icon: 'fa-solid fa-calculator' },
+    { name: 'Data Visualization', icon: 'fa-solid fa-chart-pie' },
+    { name: 'DuckDB', icon: 'fa-solid fa-database' },
+    { name: 'Feature Engineering', icon: 'fa-solid fa-sliders' },
+    { name: 'EDA (Exploratory Data Analysis)', icon: 'fa-solid fa-magnifying-glass-chart' }
   ],
   cs: [
     { name: 'Data Structures & Algorithms', icon: 'fa-solid fa-microchip' },
