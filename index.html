@@ -419,17 +419,17 @@
     </section>
   </main>
 
-  <!-- ========== FLOATING AMBIENT MUSIC PLAYER ========== -->
+  <!-- ========== FLOATING AMBIENT AUDIO PLAYER ========== -->
   <div id="music-player-widget">
     <!-- Toggle Button -->
-    <button id="music-toggle-btn" title="Now Playing: Prospa & Cloonee — Free Your Mind" aria-label="Toggle ambient music player">
+    <button id="music-toggle-btn" title="Now Playing: Prospa & Cloonee — Free Your Mind" aria-label="Toggle ambient audio player">
       <span class="music-bars" id="music-bars">
         <span></span><span></span><span></span><span></span>
       </span>
       <i class="fa-solid fa-music" id="music-icon"></i>
     </button>
 
-    <!-- Expanded Player Card -->
+    <!-- Expanded Player Card (Audio Only UI) -->
     <div id="music-player-card" class="hidden">
       <div class="music-card-header">
         <div class="music-track-info">
@@ -440,22 +440,37 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div class="music-iframe-wrapper">
-        <iframe
-          id="music-iframe"
-          width="100%"
-          height="180"
-          src="https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=1&rel=0&modestbranding=1"
-          title="Prospa &amp; Cloonee - Free Your Mind"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+
+      <!-- Cyber Vinyl & Waveform Body -->
+      <div class="music-audio-body">
+        <div class="vinyl-disc-container">
+          <div class="vinyl-disc" id="vinyl-disc">
+            <div class="vinyl-center"></div>
+          </div>
+        </div>
+        <div class="audio-controls-wrap">
+          <div class="wave-visualizer">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <button id="audio-play-pause-btn" class="audio-main-btn" aria-label="Play or Pause">
+            <i class="fa-solid fa-pause" id="audio-btn-icon"></i>
+          </button>
+        </div>
       </div>
+
       <div class="music-card-footer">
         <span class="music-status-dot"></span>
-        <span>AMBIENT MODE &mdash; CODING SESSION</span>
+        <span>AUDIO MODE &mdash; PROSPA &amp; CLOONEE</span>
       </div>
+
+      <!-- Hidden Background Audio Streamer -->
+      <iframe
+        id="music-iframe"
+        style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: 0;"
+        src=""
+        title="Audio Stream"
+        allow="autoplay"
+      ></iframe>
     </div>
   </div>
   <!-- ====================================================== -->
@@ -466,7 +481,7 @@
     <p style="margin-top: 6px; color: rgba(255,255,255,0.4);">Built with Vanilla HTML5, CSS Glassmorphic Engine & Canvas WebGL APIs</p>
   </footer>
 
-  <!-- Music Player Styles -->
+  <!-- Music Player Styles (Audio Only) -->
   <style>
     /* ---- Floating Widget Container ---- */
     #music-player-widget {
@@ -535,16 +550,17 @@
 
     /* ---- Player Card ---- */
     #music-player-card {
-      width: 320px;
-      background: rgba(10, 13, 22, 0.92);
+      width: 300px;
+      background: rgba(10, 13, 22, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(0, 243, 255, 0.25);
+      border: 1px solid rgba(0, 243, 255, 0.3);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 243, 255, 0.08);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 243, 255, 0.15);
       transform-origin: bottom right;
       animation: card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
     #music-player-card.hidden {
       display: none;
@@ -586,13 +602,106 @@
     }
     #music-close-btn:hover { color: #ff5f56; }
 
-    /* ---- iframe ---- */
-    .music-iframe-wrapper {
-      line-height: 0;
+    /* ---- Audio Body (Vinyl & Waveform) ---- */
+    .music-audio-body {
+      padding: 20px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: radial-gradient(circle at center, rgba(0, 243, 255, 0.05) 0%, transparent 70%);
     }
-    .music-iframe-wrapper iframe {
-      display: block;
+
+    /* Vinyl Disc Graphic */
+    .vinyl-disc-container {
+      width: 76px;
+      height: 76px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .vinyl-disc {
       width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: repeating-radial-gradient(#111 0px, #111 2px, #222 3px, #111 4px);
+      border: 2px solid var(--primary-cyan);
+      box-shadow: 0 0 14px rgba(0, 243, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vinyl-disc.spinning {
+      animation: spin 3s linear infinite;
+    }
+    .vinyl-center {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary-cyan);
+      border: 3px solid #000;
+      box-shadow: inset 0 0 4px rgba(0,0,0,0.8);
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Controls & Waveform */
+    .audio-controls-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .wave-visualizer {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 24px;
+    }
+    .wave-visualizer span {
+      width: 3px;
+      background: var(--primary-cyan);
+      border-radius: 2px;
+      height: 6px;
+      transition: height 0.2s;
+    }
+    .playing .wave-visualizer span {
+      animation: wave-play 0.8s ease-in-out infinite alternate;
+    }
+    .playing .wave-visualizer span:nth-child(1) { animation-delay: 0.1s; }
+    .playing .wave-visualizer span:nth-child(2) { animation-delay: 0.4s; }
+    .playing .wave-visualizer span:nth-child(3) { animation-delay: 0.2s; }
+    .playing .wave-visualizer span:nth-child(4) { animation-delay: 0.6s; }
+    .playing .wave-visualizer span:nth-child(5) { animation-delay: 0.3s; }
+    .playing .wave-visualizer span:nth-child(6) { animation-delay: 0.5s; }
+    .playing .wave-visualizer span:nth-child(7) { animation-delay: 0.15s; }
+    .playing .wave-visualizer span:nth-child(8) { animation-delay: 0.35s; }
+
+    @keyframes wave-play {
+      0% { height: 4px; }
+      100% { height: 22px; background: var(--primary-emerald); }
+    }
+
+    .audio-main-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--primary-cyan);
+      background: rgba(0, 243, 255, 0.12);
+      color: var(--primary-cyan);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .audio-main-btn:hover {
+      background: var(--primary-cyan);
+      color: #000;
+      box-shadow: 0 0 16px var(--primary-cyan);
     }
 
     /* ---- Card Footer ---- */
@@ -602,9 +711,10 @@
       gap: 8px;
       padding: 10px 16px;
       font-family: var(--font-code);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       letter-spacing: 0.05em;
+      border-top: 1px solid rgba(0, 243, 255, 0.08);
     }
     .music-status-dot {
       width: 7px;
@@ -621,36 +731,65 @@
   <script src="terminal.js"></script>
   <script src="app.js"></script>
 
-  <!-- Music Player Logic -->
+  <!-- Audio Player Logic -->
   <script>
     (function() {
       const toggleBtn  = document.getElementById('music-toggle-btn');
       const closeBtn   = document.getElementById('music-close-btn');
+      const playPauseBtn = document.getElementById('audio-play-pause-btn');
+      const btnIcon    = document.getElementById('audio-btn-icon');
       const card       = document.getElementById('music-player-card');
+      const vinyl      = document.getElementById('vinyl-disc');
       const iframe     = document.getElementById('music-iframe');
-      const SRC        = 'https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=1&rel=0&modestbranding=1';
+      const YOUTUBE_STREAM_SRC = 'https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=0';
 
-      function openPlayer() {
-        card.classList.remove('hidden');
-        iframe.src = SRC;
-        toggleBtn.classList.add('playing');
-      }
+      let isPlaying = false;
 
-      function closePlayer() {
-        card.classList.add('hidden');
-        iframe.src = '';  // pause/stop by clearing src
-        toggleBtn.classList.remove('playing');
-      }
-
-      toggleBtn.addEventListener('click', function() {
-        if (card.classList.contains('hidden')) {
-          openPlayer();
-        } else {
-          closePlayer();
+      function startAudio() {
+        isPlaying = true;
+        if (!iframe.src || iframe.src === 'about:blank') {
+          iframe.src = YOUTUBE_STREAM_SRC;
         }
+        card.classList.remove('hidden');
+        card.classList.add('playing');
+        toggleBtn.classList.add('playing');
+        vinyl.classList.add('spinning');
+        btnIcon.className = 'fa-solid fa-pause';
+      }
+
+      function pauseAudio() {
+        isPlaying = false;
+        iframe.src = ''; // stop background audio stream
+        card.classList.remove('playing');
+        toggleBtn.classList.remove('playing');
+        vinyl.classList.remove('spinning');
+        btnIcon.className = 'fa-solid fa-play';
+      }
+
+      function togglePlayerCard() {
+        if (card.classList.contains('hidden')) {
+          card.classList.remove('hidden');
+          if (!isPlaying) {
+            startAudio();
+          }
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+
+      toggleBtn.addEventListener('click', togglePlayerCard);
+
+      closeBtn.addEventListener('click', function() {
+        card.classList.add('hidden');
       });
 
-      closeBtn.addEventListener('click', closePlayer);
+      playPauseBtn.addEventListener('click', function() {
+        if (isPlaying) {
+          pauseAudio();
+        } else {
+          startAudio();
+        }
+      });
     })();
   </script>
 </body>
