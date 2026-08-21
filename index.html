@@ -419,15 +419,239 @@
     </section>
   </main>
 
+  <!-- ========== FLOATING AMBIENT MUSIC PLAYER ========== -->
+  <div id="music-player-widget">
+    <!-- Toggle Button -->
+    <button id="music-toggle-btn" title="Now Playing: Prospa & Cloonee — Free Your Mind" aria-label="Toggle ambient music player">
+      <span class="music-bars" id="music-bars">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <i class="fa-solid fa-music" id="music-icon"></i>
+    </button>
+
+    <!-- Expanded Player Card -->
+    <div id="music-player-card" class="hidden">
+      <div class="music-card-header">
+        <div class="music-track-info">
+          <div class="music-track-name">Free Your Mind</div>
+          <div class="music-track-artist">Prospa &amp; Cloonee</div>
+        </div>
+        <button id="music-close-btn" aria-label="Close player">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="music-iframe-wrapper">
+        <iframe
+          id="music-iframe"
+          width="100%"
+          height="180"
+          src="https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=1&rel=0&modestbranding=1"
+          title="Prospa &amp; Cloonee - Free Your Mind"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="music-card-footer">
+        <span class="music-status-dot"></span>
+        <span>AMBIENT MODE &mdash; CODING SESSION</span>
+      </div>
+    </div>
+  </div>
+  <!-- ====================================================== -->
+
   <!-- Footer -->
   <footer>
     <p>Designed & Engineered by <strong style="color: var(--primary-cyan);">Pranav Jadhav</strong> | VJTI Mumbai Class of '27</p>
     <p style="margin-top: 6px; color: rgba(255,255,255,0.4);">Built with Vanilla HTML5, CSS Glassmorphic Engine & Canvas WebGL APIs</p>
   </footer>
 
+  <!-- Music Player Styles -->
+  <style>
+    /* ---- Floating Widget Container ---- */
+    #music-player-widget {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    /* ---- Toggle Button ---- */
+    #music-toggle-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid var(--primary-cyan);
+      background: rgba(7, 9, 14, 0.88);
+      backdrop-filter: blur(12px);
+      color: var(--primary-cyan);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(0, 243, 255, 0.35);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    #music-toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 28px rgba(0, 243, 255, 0.6);
+    }
+    #music-toggle-btn.playing {
+      border-color: var(--primary-emerald);
+      box-shadow: 0 0 22px rgba(0, 255, 136, 0.45);
+    }
+    #music-icon { transition: opacity 0.2s; }
+    #music-toggle-btn.playing #music-icon { display: none; }
+    #music-toggle-btn:not(.playing) .music-bars { display: none; }
+
+    /* ---- Equalizer Bars Animation ---- */
+    .music-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px;
+    }
+    .music-bars span {
+      display: block;
+      width: 4px;
+      background: var(--primary-emerald);
+      border-radius: 2px;
+      animation: eq-bounce 0.9s ease-in-out infinite alternate;
+    }
+    .music-bars span:nth-child(1) { height: 8px;  animation-delay: 0s; }
+    .music-bars span:nth-child(2) { height: 16px; animation-delay: 0.15s; }
+    .music-bars span:nth-child(3) { height: 12px; animation-delay: 0.3s; }
+    .music-bars span:nth-child(4) { height: 20px; animation-delay: 0.45s; }
+    @keyframes eq-bounce {
+      0%   { transform: scaleY(0.4); opacity: 0.6; }
+      100% { transform: scaleY(1);   opacity: 1; }
+    }
+
+    /* ---- Player Card ---- */
+    #music-player-card {
+      width: 320px;
+      background: rgba(10, 13, 22, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 243, 255, 0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 243, 255, 0.08);
+      transform-origin: bottom right;
+      animation: card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #music-player-card.hidden {
+      display: none;
+    }
+    @keyframes card-in {
+      from { opacity: 0; transform: scale(0.85) translateY(12px); }
+      to   { opacity: 1; transform: scale(1)   translateY(0); }
+    }
+
+    /* ---- Card Header ---- */
+    .music-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 10px 16px;
+      border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    }
+    .music-track-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+    .music-track-artist {
+      font-family: var(--font-code);
+      font-size: 0.78rem;
+      color: var(--primary-cyan);
+      margin-top: 2px;
+    }
+    #music-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 6px;
+      transition: color 0.2s;
+    }
+    #music-close-btn:hover { color: #ff5f56; }
+
+    /* ---- iframe ---- */
+    .music-iframe-wrapper {
+      line-height: 0;
+    }
+    .music-iframe-wrapper iframe {
+      display: block;
+      width: 100%;
+    }
+
+    /* ---- Card Footer ---- */
+    .music-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-family: var(--font-code);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .music-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary-emerald);
+      box-shadow: 0 0 8px var(--primary-emerald);
+      animation: pulse 2s infinite;
+    }
+  </style>
+
   <!-- Scripts -->
   <script src="background.js"></script>
   <script src="terminal.js"></script>
   <script src="app.js"></script>
+
+  <!-- Music Player Logic -->
+  <script>
+    (function() {
+      const toggleBtn  = document.getElementById('music-toggle-btn');
+      const closeBtn   = document.getElementById('music-close-btn');
+      const card       = document.getElementById('music-player-card');
+      const iframe     = document.getElementById('music-iframe');
+      const SRC        = 'https://www.youtube.com/embed/gJYjbDnyx-o?autoplay=1&loop=1&playlist=gJYjbDnyx-o&controls=1&rel=0&modestbranding=1';
+
+      function openPlayer() {
+        card.classList.remove('hidden');
+        iframe.src = SRC;
+        toggleBtn.classList.add('playing');
+      }
+
+      function closePlayer() {
+        card.classList.add('hidden');
+        iframe.src = '';  // pause/stop by clearing src
+        toggleBtn.classList.remove('playing');
+      }
+
+      toggleBtn.addEventListener('click', function() {
+        if (card.classList.contains('hidden')) {
+          openPlayer();
+        } else {
+          closePlayer();
+        }
+      });
+
+      closeBtn.addEventListener('click', closePlayer);
+    })();
+  </script>
 </body>
 </html>
