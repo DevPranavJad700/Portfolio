@@ -81,7 +81,8 @@ class TerminalEngine {
     <tr><td><span class="term-cmd">stats</span></td><td>View Competitive Programming stats (LeetCode, Codeforces, CodeChef)</td></tr>
     <tr><td><span class="term-cmd">education</span></td><td>Details about B.Tech IT at VJTI & MHT-CET Rank</td></tr>
     <tr><td><span class="term-cmd">contact</span></td><td>Display email, phone, GitHub, and LinkedIn</td></tr>
-    <tr><td><span class="term-cmd">bg &lt;mode&gt;</span></td><td>Change canvas background: <span class="term-highlight">particles</span> | <span class="term-highlight">matrix</span> | <span class="term-grid">grid</span></td></tr>
+    <tr><td><span class="term-cmd">resume</span></td><td>Download Pranav's latest resume PDF</td></tr>
+    <tr><td><span class="term-cmd">bg &lt;mode&gt;</span></td><td>Change canvas background: <span class="term-highlight">particles</span> | <span class="term-highlight">matrix</span> | <span class="term-highlight">grid</span></td></tr>
     <tr><td><span class="term-cmd">sudo hire</span></td><td>Special command to access candidate contact info</td></tr>
     <tr><td><span class="term-cmd">clear</span></td><td>Clear terminal screen output</td></tr>
   </table>
@@ -114,6 +115,21 @@ class TerminalEngine {
 </div>
         `);
         this.scrollToSection('skills');
+        break;
+
+      case 'resume':
+        this.printLine(`
+<div class="term-output">
+  <p><span class="term-highlight">RESUME DOWNLOAD:</span></p>
+  <p>📄 <a href="Pranav_Jadhav_Resume.pdf" download="Pranav_Jadhav_Resume.pdf" class="term-link">Click here to download Pranav_Jadhav_Resume.pdf</a></p>
+  <p class="term-success">[ Initiating download... ]</p>
+</div>
+        `);
+        // Trigger download programmatically
+        const resumeLink = document.createElement('a');
+        resumeLink.href = 'Pranav_Jadhav_Resume.pdf';
+        resumeLink.download = 'Pranav_Jadhav_Resume.pdf';
+        resumeLink.click();
         break;
 
       case 'projects':
