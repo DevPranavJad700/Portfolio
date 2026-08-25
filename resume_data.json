@@ -45,20 +45,21 @@
       "title": "EventSync — Multi-Tenant Event Management SaaS",
       "date": "May 2026",
       "techStack": ["Next.js", "TypeScript", "Clerk", "Prisma", "NeonDB", "Tailwind CSS", "Upstash Redis", "Vitest", "Playwright", "GitHub Actions"],
-      "github": "https://github.com/DevPranavJad700/eventsync",
-      "bullets": [
-        "Built a full-stack multi-tenant event management SaaS with organization workspaces, Clerk authentication/organizations, and role-based access control (RBAC) enforced at the API layer with strict workspace-level data isolation.",
-        "Synced user and organization lifecycle events via Svix-backed Clerk Webhooks into NeonDB using Prisma ORM, with soft deletes and versioned migrations for safe schema evolution.",
-        "Implemented per-tenant rate limiting with Upstash Redis, Zod-validated environment config, and structured logging to harden the app for serverless deployment, and built an admin dashboard to audit webhook events.",
-        "Wrote Vitest unit/integration tests and Playwright E2E tests covering RBAC and tenant isolation, wired into a GitHub Actions CI pipeline."
+      "github": "https://github.com/DevPranavJad700/EventSync",
+      "highlights": [
+        "Synced user & org lifecycles via Svix Clerk Webhooks into NeonDB with Prisma ORM.",
+        "Per-tenant rate limiting with Upstash Redis, Zod config validation & structured logging.",
+        "Vitest unit tests & Playwright E2E tests wired into GitHub Actions CI pipeline."
       ]
     },
     {
       "id": "askaway",
       "title": "AskAway — Full-Stack QnA Platform",
       "date": "February 2026",
+      "subtitle": "February 2026 • Real-Time Web App",
+      "desc": "Stack Overflow-style developer-focused QnA platform enabling real-time question browsing and answers. Achieved sub-2s page load times across 10+ dynamic routes leveraging Next.js SSR and custom cookie session handshakes.",
       "techStack": ["Next.js", "React.js", "Appwrite", "Tailwind CSS"],
-      "github": "https://github.com/DevPranavJad700/askaway",
+      "github": "https://github.com/DevPranavJad700/AskAway",
       "bullets": [
         "Built a Stack Overflow-style developer-focused QnA platform enabling real-time question browsing and answers; leveraged Next.js SSR to achieve sub-2s page load across 10+ dynamic routes.",
         "Architected real-time answer sync using Appwrite Webhooks, with the Appwrite SDK handling authentication, user management, and database operations.",

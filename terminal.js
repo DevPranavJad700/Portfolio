@@ -136,10 +136,12 @@ class TerminalEngine {
         this.printLine(`
 <div class="term-output">
   <p><span class="term-highlight">FEATURED PROJECTS:</span></p>
-  <p>1. <span class="term-cyan">EventSync</span> - Multi-Tenant Event Management SaaS (Next.js, TS, Clerk, Prisma, Upstash Redis)</p>
-  <p>2. <span class="term-cyan">AskAway</span> - Developer QnA Platform (Next.js SSR, Appwrite Webhooks, Tailwind CSS)</p>
-  <p>3. <span class="term-cyan">Customer Churn &amp; Retention Dashboard</span> - Telecom Analytics &amp; ML Dashboard (Python, Streamlit, DuckDB, Scikit-learn | ROC-AUC: 0.841)</p>
-  <p><a href="https://github.com/DevPranavJad700/customer-churn-retention-dashboard" target="_blank" class="term-link">→ github.com/DevPranavJad700/customer-churn-retention-dashboard</a></p>
+  <p>1. <span class="term-cyan">EventSync</span> - Multi-Tenant Event Management SaaS</p>
+  <p>&nbsp;&nbsp;&nbsp;🔗 <a href="https://github.com/DevPranavJad700/EventSync" target="_blank" class="term-link">github.com/DevPranavJad700/EventSync</a></p>
+  <p>2. <span class="term-cyan">AskAway</span> - Developer QnA Platform</p>
+  <p>&nbsp;&nbsp;&nbsp;🔗 <a href="https://github.com/DevPranavJad700/AskAway" target="_blank" class="term-link">github.com/DevPranavJad700/AskAway</a></p>
+  <p>3. <span class="term-cyan">Customer Churn &amp; Retention Dashboard</span> - Telecom Analytics &amp; ML Dashboard</p>
+  <p>&nbsp;&nbsp;&nbsp;🔗 <a href="https://github.com/DevPranavJad700/customer-churn-retention-dashboard" target="_blank" class="term-link">github.com/DevPranavJad700/customer-churn-retention-dashboard</a></p>
 </div>
         `);
         this.scrollToSection('projects');
