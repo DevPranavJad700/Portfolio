@@ -429,16 +429,19 @@
       <i class="fa-solid fa-music" id="music-icon"></i>
     </button>
 
-    <!-- Expanded Player Card (Audio Only UI) -->
+    <!-- Expanded Player Card (3-Track Playlist UI) -->
     <div id="music-player-card" class="hidden">
       <div class="music-card-header">
         <div class="music-track-info">
-          <div class="music-track-name">Free Your Mind</div>
-          <div class="music-track-artist">Prospa &amp; Cloonee</div>
+          <div class="music-track-name" id="music-track-name">Free Your Mind</div>
+          <div class="music-track-artist" id="music-track-artist">Prospa &amp; Cloonee</div>
         </div>
-        <button id="music-close-btn" aria-label="Close player">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="music-header-right">
+          <span class="music-track-counter" id="music-track-counter">1 / 3</span>
+          <button id="music-close-btn" aria-label="Close player">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Cyber Vinyl & Waveform Body -->
@@ -452,19 +455,54 @@
           <div class="wave-visualizer">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
-          <button id="audio-play-pause-btn" class="audio-main-btn" aria-label="Play or Pause">
-            <i class="fa-solid fa-play" id="audio-btn-icon"></i>
-          </button>
+
+          <!-- Playback Controls (Prev, Play/Pause, Next) -->
+          <div class="audio-btn-row">
+            <button id="audio-prev-btn" class="audio-nav-btn" title="Previous Track" aria-label="Previous Track">
+              <i class="fa-solid fa-backward-step"></i>
+            </button>
+            <button id="audio-play-pause-btn" class="audio-main-btn" aria-label="Play or Pause">
+              <i class="fa-solid fa-play" id="audio-btn-icon"></i>
+            </button>
+            <button id="audio-next-btn" class="audio-nav-btn" title="Next Track" aria-label="Next Track">
+              <i class="fa-solid fa-forward-step"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playlist Selection List -->
+      <div class="music-playlist-list" id="music-playlist-list">
+        <div class="playlist-item active" data-index="0">
+          <i class="fa-solid fa-compact-disc playlist-icon"></i>
+          <div class="playlist-text">
+            <span class="playlist-title">Free Your Mind</span>
+            <span class="playlist-sub">Prospa &amp; Cloonee</span>
+          </div>
+        </div>
+        <div class="playlist-item" data-index="1">
+          <i class="fa-solid fa-compact-disc playlist-icon"></i>
+          <div class="playlist-text">
+            <span class="playlist-title">Love Me Not</span>
+            <span class="playlist-sub">Ravyn Lenae</span>
+          </div>
+        </div>
+        <div class="playlist-item" data-index="2">
+          <i class="fa-solid fa-compact-disc playlist-icon"></i>
+          <div class="playlist-text">
+            <span class="playlist-title">Oh Yeah</span>
+            <span class="playlist-sub">Steve Lacy</span>
+          </div>
         </div>
       </div>
 
       <div class="music-card-footer">
         <span class="music-status-dot"></span>
-        <span>AUDIO MODE &mdash; PROSPA &amp; CLOONEE</span>
+        <span id="music-footer-status">PLAYLIST MODE &mdash; 3 TRACKS</span>
       </div>
 
       <!-- HTML5 Native Audio Player -->
-      <audio id="audio-element" src="free-your-mind.mp3" preload="auto" loop></audio>
+      <audio id="audio-element" src="free-your-mind.mp3" preload="auto"></audio>
     </div>
   </div>
   <!-- ====================================================== -->
@@ -475,7 +513,7 @@
     <p style="margin-top: 6px; color: rgba(255,255,255,0.4);">Built with Vanilla HTML5, CSS Glassmorphic Engine & Canvas WebGL APIs</p>
   </footer>
 
-  <!-- Music Player Styles (Audio Only) -->
+  <!-- Music Player Styles (Playlist UI) -->
   <style>
     /* ---- Floating Widget Container ---- */
     #music-player-widget {
@@ -544,14 +582,14 @@
 
     /* ---- Player Card ---- */
     #music-player-card {
-      width: 300px;
-      background: rgba(10, 13, 22, 0.94);
+      width: 320px;
+      background: rgba(10, 13, 22, 0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(0, 243, 255, 0.3);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 243, 255, 0.15);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 243, 255, 0.15);
       transform-origin: bottom right;
       animation: card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
@@ -572,11 +610,29 @@
       padding: 14px 16px 10px 16px;
       border-bottom: 1px solid rgba(0, 243, 255, 0.1);
     }
+    .music-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .music-track-counter {
+      font-family: var(--font-code);
+      font-size: 0.72rem;
+      color: var(--primary-cyan);
+      background: rgba(0, 243, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 243, 255, 0.2);
+    }
     .music-track-name {
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: 0.95rem;
       color: var(--text-main);
+      max-width: 190px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .music-track-artist {
       font-family: var(--font-code);
@@ -598,18 +654,18 @@
 
     /* ---- Audio Body (Vinyl & Waveform) ---- */
     .music-audio-body {
-      padding: 20px 16px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      background: radial-gradient(circle at center, rgba(0, 243, 255, 0.05) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(0, 243, 255, 0.06) 0%, transparent 70%);
     }
 
     /* Vinyl Disc Graphic */
     .vinyl-disc-container {
-      width: 76px;
-      height: 76px;
+      width: 72px;
+      height: 72px;
       position: relative;
       flex-shrink: 0;
     }
@@ -628,8 +684,8 @@
       animation: spin 3s linear infinite;
     }
     .vinyl-center {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--primary-cyan);
       border: 3px solid #000;
@@ -644,7 +700,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-grow: 1;
     }
 
@@ -652,7 +708,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      height: 24px;
+      height: 20px;
     }
     .wave-visualizer span {
       width: 3px;
@@ -675,17 +731,41 @@
 
     @keyframes wave-play {
       0% { height: 4px; }
-      100% { height: 22px; background: var(--primary-emerald); }
+      100% { height: 20px; background: var(--primary-emerald); }
     }
 
+    .audio-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .audio-nav-btn {
+      background: none;
+      border: 1px solid rgba(0, 243, 255, 0.25);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .audio-nav-btn:hover {
+      border-color: var(--primary-cyan);
+      color: var(--primary-cyan);
+      background: rgba(0, 243, 255, 0.1);
+    }
     .audio-main-btn {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: 1px solid var(--primary-cyan);
-      background: rgba(0, 243, 255, 0.12);
+      background: rgba(0, 243, 255, 0.15);
       color: var(--primary-cyan);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -698,17 +778,66 @@
       box-shadow: 0 0 16px var(--primary-cyan);
     }
 
+    /* Playlist Items */
+    .music-playlist-list {
+      max-height: 125px;
+      overflow-y: auto;
+      border-top: 1px solid rgba(0, 243, 255, 0.08);
+      padding: 6px 0;
+    }
+    .playlist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .playlist-item:hover {
+      background: rgba(0, 243, 255, 0.08);
+    }
+    .playlist-item.active {
+      background: rgba(0, 243, 255, 0.14);
+      border-left: 3px solid var(--primary-cyan);
+    }
+    .playlist-icon {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .playlist-item.active .playlist-icon {
+      color: var(--primary-cyan);
+    }
+    .playlist-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .playlist-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .playlist-sub {
+      font-family: var(--font-code);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .playlist-item.active .playlist-title {
+      color: var(--primary-cyan);
+    }
+
     /* ---- Card Footer ---- */
     .music-card-footer {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
+      padding: 8px 16px;
       font-family: var(--font-code);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
       letter-spacing: 0.05em;
       border-top: 1px solid rgba(0, 243, 255, 0.08);
+      background: rgba(0, 0, 0, 0.2);
     }
     .music-status-dot {
       width: 7px;
@@ -725,16 +854,49 @@
   <script src="terminal.js"></script>
   <script src="app.js"></script>
 
-  <!-- Audio Player Logic (HTML5 MP3) -->
+  <!-- Audio Player Logic (3-Track Playlist) -->
   <script>
     (function() {
-      const toggleBtn    = document.getElementById('music-toggle-btn');
-      const closeBtn     = document.getElementById('music-close-btn');
-      const playPauseBtn = document.getElementById('audio-play-pause-btn');
-      const btnIcon      = document.getElementById('audio-btn-icon');
-      const card         = document.getElementById('music-player-card');
-      const vinyl        = document.getElementById('vinyl-disc');
-      const audio        = document.getElementById('audio-element');
+      const playlist = [
+        { title: "Free Your Mind", artist: "Prospa & Cloonee", file: "free-your-mind.mp3" },
+        { title: "Love Me Not", artist: "Ravyn Lenae", file: "love-me-not.mp3" },
+        { title: "Oh Yeah", artist: "Steve Lacy", file: "oh-yeah.mp3" }
+      ];
+
+      let currentIndex = 0;
+
+      const toggleBtn     = document.getElementById('music-toggle-btn');
+      const closeBtn      = document.getElementById('music-close-btn');
+      const playPauseBtn  = document.getElementById('audio-play-pause-btn');
+      const prevBtn       = document.getElementById('audio-prev-btn');
+      const nextBtn       = document.getElementById('audio-next-btn');
+      const btnIcon       = document.getElementById('audio-btn-icon');
+      const card          = document.getElementById('music-player-card');
+      const vinyl         = document.getElementById('vinyl-disc');
+      const audio         = document.getElementById('audio-element');
+
+      const trackNameEl   = document.getElementById('music-track-name');
+      const trackArtistEl = document.getElementById('music-track-artist');
+      const counterEl     = document.getElementById('music-track-counter');
+      const playlistItems = document.querySelectorAll('.playlist-item');
+
+      function loadTrack(index) {
+        currentIndex = index;
+        const track = playlist[currentIndex];
+        audio.src = track.file;
+        trackNameEl.textContent = track.title;
+        trackArtistEl.textContent = track.artist;
+        counterEl.textContent = `${currentIndex + 1} / ${playlist.length}`;
+        toggleBtn.title = `Now Playing: ${track.title} — ${track.artist}`;
+
+        playlistItems.forEach((item, i) => {
+          if (i === currentIndex) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
 
       function playAudio() {
         audio.play().then(() => {
@@ -743,7 +905,7 @@
           vinyl.classList.add('spinning');
           btnIcon.className = 'fa-solid fa-pause';
         }).catch(err => {
-          console.log('Audio playback waiting for file or user gesture:', err);
+          console.log('Playback interaction required:', err);
         });
       }
 
@@ -755,7 +917,28 @@
         btnIcon.className = 'fa-solid fa-play';
       }
 
-      function togglePlayerCard() {
+      function togglePlayPause() {
+        if (audio.paused) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+
+      function nextTrack() {
+        const nextIdx = (currentIndex + 1) % playlist.length;
+        loadTrack(nextIdx);
+        playAudio();
+      }
+
+      function prevTrack() {
+        const prevIdx = (currentIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(prevIdx);
+        playAudio();
+      }
+
+      // Toggle card visibility
+      toggleBtn.addEventListener('click', function() {
         if (card.classList.contains('hidden')) {
           card.classList.remove('hidden');
           if (audio.paused) {
@@ -764,21 +947,32 @@
         } else {
           card.classList.add('hidden');
         }
-      }
-
-      toggleBtn.addEventListener('click', togglePlayerCard);
+      });
 
       closeBtn.addEventListener('click', function() {
         card.classList.add('hidden');
       });
 
-      playPauseBtn.addEventListener('click', function() {
-        if (audio.paused) {
+      playPauseBtn.addEventListener('click', togglePlayPause);
+      nextBtn.addEventListener('click', nextTrack);
+      prevBtn.addEventListener('click', prevTrack);
+
+      // Click playlist item directly
+      playlistItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-index'), 10);
+          loadTrack(idx);
           playAudio();
-        } else {
-          pauseAudio();
-        }
+        });
       });
+
+      // Auto-advance on track finish
+      audio.addEventListener('ended', function() {
+        nextTrack();
+      });
+
+      // Initial load
+      loadTrack(0);
     })();
   </script>
 </body>
